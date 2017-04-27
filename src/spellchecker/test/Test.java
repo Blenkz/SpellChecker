@@ -1,4 +1,4 @@
-package spellchecker.loader;
+package spellchecker.test;
 
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.ExecutorService;
@@ -6,6 +6,7 @@ import java.util.concurrent.Executors;
 
 import spellchecker.data.DictionaryData;
 import spellchecker.data.WordText;
+import spellchecker.loader.FileLoad;
 import spellchecker.verification.SpellCheck;
 
 public class Test {
