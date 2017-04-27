@@ -2,7 +2,11 @@ package spellchecker.data;
 
 import java.util.*;
 
-
+/**
+ * The dictionary object containing all of the words
+ * @author Blenkz
+ *
+ */
 public class DictionaryData {
 	
 	private List<String> dict;

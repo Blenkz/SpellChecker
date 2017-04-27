@@ -8,6 +8,11 @@ import java.util.concurrent.*;
 import spellchecker.data.DictionaryData;
 import spellchecker.data.WordText;
 
+/**
+ * All spell checking is done here. Each thread checks a word
+ * @author Blenkz
+ *
+ */
 public class SpellCheck extends Observable implements Runnable  {
 
 	private DictionaryData data;
@@ -32,6 +37,7 @@ public class SpellCheck extends Observable implements Runnable  {
 			wt = textComplete.remove(index);
 			
 		}
+		//Look for any punctuation in the word
 		if (wt.getWord().indexOf(".") > -1 || wt.getWord().indexOf("!") > -1
 				|| wt.getWord().indexOf("?") > -1 || wt.getWord().indexOf(";") > -1
 				|| wt.getWord().indexOf(":") > -1) {
@@ -53,7 +59,6 @@ public class SpellCheck extends Observable implements Runnable  {
 	public void run() {
 		// TODO Auto-generated method stub
 		this.checkSpelling();
-		System.out.println(Thread.activeCount());
 	}
 
 }

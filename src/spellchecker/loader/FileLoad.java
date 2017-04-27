@@ -18,6 +18,11 @@ public class FileLoad {
 
 	private static String textFile;
 
+	/**
+	 * Load the dictionary file and return the Dictionary OBject
+	 * @param filename The file path
+	 * @return	Dictionary Object full of words
+	 */
 	public static DictionaryData loadDictionary(String filename) {
 
 		List<String> words = new ArrayList<String>();
@@ -50,6 +55,11 @@ public class FileLoad {
 		return data;
 	}
 
+	/**
+	 * Load the text file in a HashMap for concurrency
+	 * @param filename	The file to load
+	 * @return	A map containing the objects
+	 */
 	public static ConcurrentMap<WordText, Boolean> loadText(String filename) {
 		textFile = filename;
 		ConcurrentMap<WordText, Boolean> words = new ConcurrentHashMap<WordText, Boolean>();
@@ -85,6 +95,11 @@ public class FileLoad {
 		return words;
 	}
 
+	/**
+	 * Writes the text to the file
+	 * 
+	 * @param content	The text that needs to be saved
+	 */
 	public static void fileSave(String content) {
 		BufferedWriter bw = null;
 		FileWriter fw = null;

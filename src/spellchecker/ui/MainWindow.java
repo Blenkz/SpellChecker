@@ -169,6 +169,10 @@ public class MainWindow {
 		frame.getContentPane().add(btnNewButton);
 	}
 
+	/**
+	 * Load the dictionary file that contains the list of words
+	 * @param path	Absolute Path to the file
+	 */
 	private void loadDictionaryFile(String path) {
 		list.setModel(new DefaultListModel<String>());
 		dictionary = FileLoad.loadDictionary(path);
@@ -189,6 +193,10 @@ public class MainWindow {
 
 	}
 
+	/**
+	 * Load the text file that contains the text to be checked
+	 * @param path	Absolute path to the file
+	 */
 	private void loadTextFile(String path) {
 		text = FileLoad.loadText(path);
 		String textFull = "";
@@ -207,24 +215,35 @@ public class MainWindow {
 			text= null;
 	}
 
+	/**
+	 * Write the contents of the Text Pane to a file
+	 */
 	private void saveTextFile() {
 		FileLoad.fileSave(textPane.getText());
 		JOptionPane.showMessageDialog(frame, "File was saved successfully!", "Success", 1);
 	}
 
+	/**
+	 * Check the spelling in the text pane
+	 */
 	private void checkSpelling() {
+		//Make sure the dictionary and text have both been loaded
 		if (dictionary == null)
 			JOptionPane.showMessageDialog(frame, "Please Load a Dictionary File", "No Dictionary", 1);
 		else if (text == null)
 			JOptionPane.showMessageDialog(frame, "Please Load a Text File", "No Text", 1);
 		else {
+			//Erase the text pane to display the checked text
 			textPane.setText("");
+			
+			//Create a thread pool to check 10 words at a time
 			ExecutorService es = Executors.newFixedThreadPool(10);
 			Runnable sc = new SpellCheck(dictionary, text);
 			for(int i = 0;i<text.size();i++){
 				es.execute(sc);
 			}
 			es.shutdown();
+		
 			while(!es.isTerminated()){
 				//Threads are still running
 			}
@@ -238,6 +257,8 @@ public class MainWindow {
 			
 			for(WordText wt: keys)
 			{
+				//If the spelling is correct, leave the font black
+				//If it is incorrect, change the font to red
 				if(wt.isCorrect())
 					StyleConstants.setForeground(style, Color.black);
 				else
