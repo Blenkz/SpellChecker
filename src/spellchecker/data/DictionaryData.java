@@ -29,7 +29,6 @@ public class DictionaryData {
 	}
 	
 	public boolean checkSpelling(String word){
-		System.out.println("Does Dictionary Contain: " + word + "?: " + dict.contains(word.toLowerCase()));
 		if(dict.contains(word.toLowerCase()))
 				return true;
 		

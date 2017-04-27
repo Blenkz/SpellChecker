@@ -220,6 +220,7 @@ public class MainWindow {
 	 */
 	private void saveTextFile() {
 		FileLoad.fileSave(textPane.getText());
+		text = FileLoad.loadText("");
 		JOptionPane.showMessageDialog(frame, "File was saved successfully!", "Success", 1);
 	}
 

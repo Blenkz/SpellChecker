@@ -1,5 +1,10 @@
 package spellchecker.data;
 
+/**
+ * Hold a word from the text with its order within the text
+ * @author Brendan Blencowe
+ *
+ */
 public class WordText implements Comparable<WordText> {
 
 	private String word;
