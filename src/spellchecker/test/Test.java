@@ -13,8 +13,8 @@ public class Test {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		DictionaryData dict = FileLoad.loadDictionary("Files//Test.txt");
-		ConcurrentMap<WordText, Boolean> text = FileLoad.loadText("Files//Test2.txt");
+		DictionaryData dict = FileLoad.loadDictionary("Files//DictionaryTest.txt");
+		ConcurrentMap<WordText, Boolean> text = FileLoad.loadText("Files//TextTest.txt");
 
 		
 		ExecutorService es = Executors.newFixedThreadPool(10);
